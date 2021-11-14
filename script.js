@@ -6,6 +6,7 @@ let scoreplace = document.querySelector(".score");
 let highscoreplace = document.querySelector(".highscore");
 let theNumber = document.querySelector(".secret-number");
 let againButton = document.querySelector(".again");
+let hintMessage = document.querySelector(".message");
 
 let Score = 20; /* We are inititalzing the score so we can update it with DOM on the screen */
 let HighScore = 0; /* Same as above here */
@@ -31,6 +32,10 @@ checkButton.addEventListener("click", () => {
       highscoreplace.innerText = " your high score: " + HighScore;
     }
   } else if (guessnumber !== secretNumber) {
+    hintMessage.innerText =
+      guessnumber > secretNumber
+        ? " HINT: number is too high try below it."
+        : " HINT: number is two low try above it.";
     Score--;
     scoreplace.innerText = "Score: " + Score;
   }
@@ -43,4 +48,5 @@ againButton.addEventListener("click", function () {
   Score = 20;
   scoreplace.innerText = "Score: " + Score;
   input.value = "";
+  document.querySelector("body").style.backgroundColor = "";
 });
